@@ -1,0 +1,350 @@
+#include<stdio.h>
+#include<string.h>
+void location();
+void input_for_locaton();
+void atm();
+int pin();
+void hotel();
+void food();
+void visit();
+void cashwith_drawal();
+void balance_enquiry();
+int cash_diposit();
+void balance_enquiry();
+void cash_deposit();
+int payment(int );
+int food_payment(int);
+int rp,b = 1000,be,password;  // b = balance 
+int main(){
+                        // variables
+                        int p;
+                  printf("Press 1. to Enter in our city : ");
+                  scanf("%d",&p);
+                  if(p == 1){
+                  	location();
+				  }else{
+				  	printf("\nSorry ! you have entered invalid choice ");
+				  }
+				  return 0;
+}
+void location(){
+
+	printf("\n1.ATM\n2.Hotel\n3.Food\n4.Tourist Places");
+	input_for_locaton();
+}
+void input_for_locaton(){
+		int p;
+		scanf("%d",&p);
+		if(p == 1){
+			atm();
+		}else if(p == 2){
+			hotel();
+		}else if(p == 3){
+		    food();
+		}else if(p == 4){
+			visit();
+		}else{
+			printf(" ");
+		}
+}
+//-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+void atm(){
+int n;
+     printf("\n\n\t\t\t1.CASH WITHDRAWAL\t\t\t2.BALANCE ENQUIRY\n");
+     printf("\t\t\t3.SET PASSWORD      \t\t\t4.CASH DIPOSIT\n");
+     printf("\n\n\t\t\t1\t\t2\t\t3");
+     printf("\n\n\t\t\t4\t\t5\t\t6");
+     printf("\n\n\t\t\t7\t\t8\t\t9");
+     printf("\n\n\t\t\t0\t\t=\t\t");
+	 scanf("%d",&n);
+	 if(n == 3) pin();
+      else if (n == 1) cashwith_drawal();
+      else if(n == 2) balance_enquiry();
+      else if(n == 4) cash_deposit();
+      else {
+	printf("\t\t\tInvalid choice \n\n\t\t\t1.Back\t\t0.Exit\t\t");
+	scanf("%d",&be);
+	if(be == 1) location();
+	else if(be == 0) printf("\t\t\t\tThank you");
+	else printf("\n\n\t\t\t\tInvalid choice");
+    }
+}
+//---------------------------- 1.CHANGE PIN FUNCTION ----------------------
+int pin(){
+	printf("\n\t\t\t\t\tGENERATE PASSWORD\n");
+	printf("\n\t\t\tGenerate your new pin ");
+	printf("\n\n\t\t\t1\t\t2\t\t3");
+    printf("\n\n\t\t\t4\t\t5\t\t6");
+    printf("\n\n\t\t\t7\t\t8\t\t9");
+    printf("\n\n\t\t\t0\t\t=\t     ");
+	scanf("%d",&rp);
+	printf("\n\t\t\t1.Back\t\t0.Exit\t\t");
+	scanf("%d",&be);
+	if(be == 1) atm();
+	else if(be == 0) printf("\n\n\t\t\t\tThank you");
+	else printf("\n\n\t\t\t\tInvalid choice");
+}
+// ------------------------2.CASHWITH DRAWAL FUNCTION--------------------
+void cashwith_drawal(){
+	printf("\n\t\t\t\t\tCASH WITHDRAWAL\n");
+    int r2000,r500,r200,r100,r50,N;
+	 printf("\n\t\t\tEnter pin");
+	 printf("\n\n\t\t\t1\t\t2\t\t3");
+     printf("\n\n\t\t\t4\t\t5\t\t6");
+     printf("\n\n\t\t\t7\t\t8\t\t9");
+     printf("\n\n\t\t\t0\t\t=\t     ");
+	 scanf("%d",&password);
+	 if(password == rp)
+	{
+	printf("\n\t\t\tPASSWORD  SUCCESSFUL . . .");
+    printf("\n\n\t\t\tEnter Amount =   ");
+	scanf("%d",&N);
+	if(N<= b){
+	r2000 = N/2000;
+	r500  = (N-2000*r2000)/500;
+	r200  =(N-2000*r2000-500*r500)/200;
+	r100 = (N-2000*r2000-500*r500-200*r200)/100;
+	r50  =(N-2000*r2000-500*r500-200*r200 -100*r100)/50;
+	if(r2000>0) printf("\n\t\t\tTotal Number of Rs.2000 notes = %d ",r2000);
+	if(r500>0) printf("\n\t\t\tTotal Number of Rs.500 notes = %d ",r500);
+	if(r200>0) printf("\n\t\t\tTotal Number of Rs.200 notes = %d ",r200);
+	if(r100>0) printf("\n\t\t\tTotal Number of Rs.100 notes = %d ",r100);
+	if(r50>0) printf("\n\t\t\tTotal Number of Rs.50 notes = %d ",r50);
+	printf("\n\t\t\tTotal Number of notes = %d",r2000+r500+r200+r100+r50);
+    printf("\n\n\t\t\tHAVE A NICE DAY !");
+    b = b-N;
+    printf("\n\n\t\t\t1.Back\t\t0.Exit\t\t");
+	scanf("%d",&be);
+	if(be == 1) atm();
+	else if(be == 0) printf("\n\n\t\t\t\tThank you");
+	else printf("\n\n\t\t\t\tInvalid choice");
+	}
+    else 
+    printf("\n\t\t\tyou have only %d rupees \n\t\tplease check you balance then enter amount for withdrawal",b);
+	}
+	else
+	{  printf("\n\n\n\n\t\t\t\tWRONG PASSWORD. . . . . . .");
+	printf("\n\t 1.Back\t\t\t0.Exit ");
+	scanf("%d",&be);
+	if(be == 1) location();
+	else if(be == 0) printf("Thank you");
+	else printf("\a  Invalid choice");
+	}
+	
+}
+// ---------------------3.BALANCE ENQUIRY FUNCTION-------------------------
+void balance_enquiry(){
+	printf("\n\t\t\t\t\tBALANCE INQUIRY\n");
+	printf("\n\t\t\tEnter  4  digit pin number ");
+	printf("\n\n\t\t\t1\t\t2\t\t3");
+    printf("\n\n\t\t\t4\t\t5\t\t6");
+    printf("\n\n\t\t\t7\t\t8\t\t9");
+    printf("\n\n\t\t\t0\t\t=\t\t"); 
+	scanf("%d",&password);
+	if(password == rp){ 
+	printf("\n\t\t\tPASSWORD  SUCCESSFUL . . .");
+	printf("\n\t\t\tYour Total Balance = %d",b);
+	printf("\n\n\t\t\t1.Back\t\t0.Exit\t\t");
+	scanf("%d",&be);
+	if(be == 1) atm();
+	else if(be == 0) printf("\n\n\t\t\t\tThank you");
+	else printf("\n\n\t\t\t\tInvalid choice . . . ");
+	} else
+	{
+	printf("\n\t\t\tWRONG  PASSWORD . . .");
+    printf("\n\n\t\t\t1.Back\t\t0.Exit\t\t");
+	scanf("%d",&be);
+	if(be == 1) location();
+	else if(be == 0) printf("\n\n\t\t\t\tThank you");
+	else printf("\n\n\t\t\t\tInvalid choice");
+	} 
+}
+// ----------------- 4.CASH DEPOSIT FUNCTION ----------------------
+void cash_deposit(){
+	printf("\n\t\t\t\t\tCASH DIPOSIT\n");
+	printf("\n\n\t\t\tEnter  4 digit pin number ");
+	printf("\n\n\t\t\t1\t\t2\t\t3");
+    printf("\n\n\t\t\t4\t\t5\t\t6");
+    printf("\n\n\t\t\t7\t\t8\t\t9");
+    printf("\n\n\t\t\t0\t\t=\t     ");
+	    scanf("%d",&password);
+	if(password == rp){
+	 printf("\n\t\t\tPASSWORD  SUCCESSFUL . . .");
+	 printf("\n\t\t\tEnter balance ");
+	 printf("\n\n\t\t\t1\t\t2\t\t3");
+     printf("\n\n\t\t\t4\t\t5\t\t6");
+     printf("\n\n\t\t\t7\t\t8\t\t9");
+     printf("\n\n\t\t\t0\t\t=\t     ");
+	 scanf("%d",&b);
+	 printf("\n\n\t\t\tyour Amount has been sucessfully diposited");
+	 printf("\n\n\t\t\t1.Back\t\t0.Exit\t\t");
+	 scanf("%d",&be);
+	 if(be == 1) location();
+	 else if(be == 0) printf("\n\n\t\t\t\tThank you");
+	 else printf("\n\n\t\t\t\tInvalid choice");
+	 } else {
+     printf("\n\t\t\tWRONG  PASSWORD . . .");
+	 printf("\n\n\t\t\t1.Back\t\t0.Exit\t\t");
+	 scanf("%d",&be);
+	 if(be == 1) atm();
+	 else if(be == 0) printf("\n\n\t\t\t\tThank you");
+	 else printf("\n\n\t\t\t\tInvalid choice");
+	 } 
+}
+//-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+void hotel(){
+	           int p;
+	           printf("\nHotel Serial.no");
+	           printf("\n1.                One Star Hotels....<- 1000rupees");
+			   printf("\n2.                Two-Star Hotels....<- 1500rupees");
+	           printf("\n3.                Three-Star Hotels....<- 2000rupees");
+	           printf("\n4.                Four-Star Hotels....<- 2500rupees");
+	           printf("\n5.                Five-Star Hotels....<- 5000rupees");
+	           printf("\n6.                Heritage Hotels....<- 3500rupees");
+	           printf("\n7.                Small Hotel....<- 2700rupees");
+	           printf("\n8.                Downtown Hotel....<- 3000rupees");
+	             printf("\nLet's do the payment : ");
+	             printf("\nEnter your Hotel Serial.no : ");
+	             scanf("%d",&p);
+	             if(p == 1){
+	             	payment(1000);
+				 }else if(p == 2){
+				 	payment(1500);
+				 }else if(p == 3){
+				 	payment(2000);
+				 }else if(p == 4){
+				 	payment(2500);
+				 }else if(p == 5){
+				 	payment(5000);
+				 }else if(p == 6){
+				 	payment(3500);
+				 }else if(p == 7){
+				 	payment(2700);
+				 }else if(p == 8){
+				 	payment(3000);
+				 }else{
+				 	printf("\nInvalid choice ");
+				 	location();
+				 }
+}
+int  payment(int p){
+	  if(p<=b){
+	  	printf(" payment sucessfully  completed ");
+	  	printf("\nYour hotel have been booked . . . . ");
+	  	printf("\n\n\t\t\t1.Back\t\t0.Exit\t\t");
+	scanf("%d",&be);
+	if(be == 1) location();
+	else if(be == 0) printf("\n\n\t\t\t\tThank you");
+	else printf("\n\n\t\t\t\tInvalid choice");
+	  }else{
+	  	atm();
+	  }
+}
+union name{
+	char *f_name[50];
+};
+int nf,c,sum = 0;// number of food varible // food code variable
+void food(){
+	int p;
+	int c_arr[10] = {505,572,302,272,386,263,926,643,257,397}; // code of food name
+	int f_arr[10] = {190,250,230,300,100,120,320,350,150,300};
+	printf("1. Veg food list\t\t\t\t2.Non- veg food list\n");
+	scanf("%d",&p);
+	if(p == 1){
+    printf("\n\t\t\t\tThe list of top indian veg foods. . . .\n");    
+    printf("\n\t\t\t\t505.Malai kofta :------ 190 rupees");
+    printf("\n\t\t\t\t572.Mattar paneer :------ 250 rupees");
+    printf("\n\t\t\t\t302.Misal pav:------ 230 rupees");
+    printf("\n\t\t\t\t272.Rajma:------ 300 rupees");
+    printf("\n\t\t\t\t386.Dal tadka:------ 100 rupees");
+    printf("\n\t\t\t\t263.Misal:------ 120 rupees");
+    printf("\n\t\t\t\t926.Pav bhaji:------ 320 rupees");
+    printf("\n\t\t\t\t643.Dal makhani:------ 350 rupees");
+    printf("\n\t\t\t\t257.Palak paneer:------ 150 rupees");
+    printf("\n\t\t\t\t397.chana masala:------ 300 rupees");
+    printf("\nEnter How Many food item's Your Want to Order : ");
+    scanf("%d",&nf);
+    printf("\n\t\t\t\t  Thank you");
+        printf("\nEnter food number ");
+	for(int i = 0; i<nf; i++){
+		printf("\nEnter %d code of food : ",i+1);
+         	 scanf("%d",&c);
+         	 for(int i = 0;i<10;i++){
+         	 	if(c_arr[i] == c){
+         	 		sum = sum + f_arr[i];
+				  }
+			  }  
+	 }
+	            int tp = sum; // tp = total price
+	          printf("\n Your total price of food  = %d",tp);
+	          printf("\n Press 1. for go on payment\n");
+	          scanf("%d",&c);
+	          if(c == 1){
+	          	food_payment(tp);
+			  }else{
+			  	input_for_locaton();
+			  }
+	          
+	}else if(p == 2){
+		printf("\n\t\t\t\tThe list of top indian Non-veg foods. . . .\n");    
+    printf("\n\t\t\t\t505.Butter Chicken:------ 190 rupees");
+    printf("\n\t\t\t\t572.Tanduri Chicken:------ 250 rupees");
+    printf("\n\t\t\t\t302.Mutton Curry:------ 230 rupees");
+    printf("\n\t\t\t\t272.Rogan josh:------ 300 rupees");
+    printf("\n\t\t\t\t386.Machher jhol:------ 100 rupees");
+    printf("\n\t\t\t\t263.Biryani:------ 120 rupees");
+    printf("\n\t\t\t\t926.Mutton Marag:------ 320 rupees");
+    printf("\n\t\t\t\t643.Egg Fried rice:------ 350 rupees");
+    printf("\n\t\t\t\t257.Egg Noodles:------ 150 rupees");
+    printf("\n\t\t\t\t397.Egg Puffs:------ 300 rupees");
+    printf("\nEnter How Many food item's Your Want to Order : ");
+    scanf("%d",&nf);
+    printf("\n\t\t\t\t  Thank you");
+        printf("\nEnter food number ");
+	for(int i = 0; i<nf; i++){
+		printf("\nEnter %d code of food : ",i+1);
+         	 scanf("%d",&c);
+         	 for(int i = 0;i<10;i++){
+         	 	if(c_arr[i] == c){
+         	 		sum = sum + f_arr[i];
+				  }
+			  }
+	 }
+	                  int tp = sum; // tp = total price
+	          printf("\n Your total price of food  = %d",tp);
+	          printf("\n Press 1. for go on payment\n");
+	          scanf("%d",&c);
+	          if(c == 1){
+	          	food_payment(tp);
+			  }else{
+			  	input_for_locaton();
+			  }
+	}
+	else {
+		food();
+	}
+}
+
+int food_payment(int tp){
+        if(tp<=b){
+	  	printf(" payment sucessfully  completed ");
+	  	printf("\n\n\t\tYour food have been Ordered . . . . ");
+	  	printf("\n\n\t\t\t1.Back\t\t0.Exit\t\t");
+	scanf("%d",&be);
+	if(be == 1) location();
+	else if(be == 0) printf("\n\n\t\t\t\tThank you");
+	else printf("\n\n\t\t\t\tInvalid choice");
+	  }else{
+	  	atm();
+	  }
+}
+void visit(){
+	           printf("\t\t\t\t\tindia's  most popular Tourist places");
+	           printf("\n\t\tTaj Mahal\n\t\t\tVaransi\n\t\tSri Harmandir Sahib\n");
+	           printf("\t\tAmber places\n\t\t Gateway of india\n\t\t Red Fort");
+	           printf("\n\t\tMahabodhi Temple\n\t\t Agra Fort\n\t\t Mysore Palace");
+	           printf("\n\t\tMehrangarh Museum Trust\n\t\t Hava Mahal\n\t\t Agra");
+	           printf("\n\t\tNew Delhi\n\t\t Goa\n\t\t Jim Corbett National Park\n\t\t Kolkata");
+	           printf("\n\t\tJaipur\n\t\t Manali\n\t\t Ellora Caves");
+}
+
